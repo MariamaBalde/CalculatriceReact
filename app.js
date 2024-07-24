@@ -12,6 +12,7 @@ class Calculatrice extends React.Component {
         this.setState(state => ({ display: state.display + value }))
     }
 
+
     handleCalculate() {
         if (this.state.display === '') {
             this.inputRef.current.focus();
@@ -45,39 +46,39 @@ class Calculatrice extends React.Component {
                     <div className="card bg-white border border-info-subtle border-5 rounded-3 p-0">
                         <div className="card-header bg-info-subtle">
                             <div className="form-group">
-                                <input type="text" className="form-control border border-3" value={this.state.display} readonly />
+                                <input type="text" className="form-control border border-3" value={this.state.display} autofocus />
                             </div>
                         </div>
                         <div className="card-body">
                             <div className="btn-group d-flex gap-2" role="group" >
                                 <button className="btn btn-info text-center rounded-5" onClick={() => this.handleResetzero()}>AC</button>
                                 <button className="btn btn-info text-center rounded-5 " onClick={() => this.handleClear()}><i class="fa-solid fa-delete-left"></i></button>
-                                <button className="btn btn-info text-center rounded-5" onClick={() => this.handleClick('*100')}>%</button>
-                                <button className="btn btn-info text-center rounded-5" onClick={() => this.handleClick('/')}>/</button>
+                                <button className="btn btn-info text-center rounded-5" onClick={() => this.handleClick('(')}>(</button>
+                                <button className="btn btn-info text-center rounded-5" onClick={() => this.handleClick(')')}>)</button>
                             </div>
                             <div className="btn-group d-flex  gap-2" role="group" >
                                 <button className="btn btn-secondary text-center text-dark rounded-5" onClick={() => this.handleClick('7')}>7</button>
                                 <button className="btn btn-secondary text-center text-dark rounded-5 " onClick={() => this.handleClick('8')}>8</button>
                                 <button className="btn btn-secondary text-center text-dark rounded-5" onClick={() => this.handleClick('9')}>9</button>
-                                <button className="btn btn-info text-center rounded-5" onClick={() => this.handleClick('*')}>x</button>
+                                <button className="btn btn-info text-center rounded-5" onClick={() => this.handleClick('/')}>/</button>
                             </div>
                             <div className="btn-group d-flex  gap-2" role="group" >
                                 <button className="btn btn-secondary text-center text-dark rounded-5" onClick={() => this.handleClick('4')}>4</button>
                                 <button className="btn btn-secondary text-center text-dark rounded-5 " onClick={() => this.handleClick('5')}>5</button>
                                 <button className="btn btn-secondary text-center text-dark rounded-5" onClick={() => this.handleClick('6')}>6</button>
-                                <button className="btn btn-info text-center rounded-5" onClick={() => this.handleClick('-')}>-</button>
+                                <button className="btn btn-info text-center rounded-5" onClick={() => this.handleClick('*')}>x</button>
                             </div>
                             <div className="btn-group d-flex  gap-2" role="group" >
                                 <button className="btn btn-secondary text-center text-dark rounded-5" onClick={() => this.handleClick('1')}>1</button>
                                 <button className="btn btn-secondary text-center text-dark rounded-5 " onClick={() => this.handleClick('2')}>2</button>
                                 <button className="btn btn-secondary text-center text-dark rounded-5" onClick={() => this.handleClick('3')}>3</button>
-                                <button className="btn btn-info text-center rounded-5" onClick={() => this.handleClick('+')}>+</button>
+                                <button className="btn btn-info text-center rounded-5" onClick={() => this.handleClick('-')}>-</button>
                             </div>
                             <div className="btn-group d-flex  gap-2" role="group" >
                                 <button className="btn btn-secondary text-center text-dark rounded-5" onClick={() => this.handleClick('0')}>0</button>
                                 <button className="btn btn-secondary text-center text-dark rounded-5 " onClick={() => this.handleClick(',')}>,</button>
-                                <button className="btn btn-secondary text-center text-dark rounded-5" onClick={() => this.handleClick('()')}>()</button>
                                 <button className="btn btn-info text-center rounded-5" onClick={() => this.handleCalculate()}>=</button>
+                                <button className="btn btn-info text-center rounded-5" onClick={() => this.handleClick('+')}>+</button>
                             </div>
                         </div>
                     </div>
