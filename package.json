@@ -1,5 +1,6 @@
 {
   "devDependencies": {
+    "homepage": "https://github.com/MariamaBalde/CalculatriceReact.git",
     "gh-pages": "^6.1.1"
   },
   "scripts":{ 
