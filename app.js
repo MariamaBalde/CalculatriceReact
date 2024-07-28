@@ -3,7 +3,7 @@ class Calculatrice extends React.Component {
         super(props);
         this.state = { display: '' }
         this.handleClick = this.handleClick.bind(this);
-        this.handleCalculate=this.handleCalculate.bind(this);
+        this.handleCalculate = this.handleCalculate.bind(this);
         this.handleClear = this.handleClear.bind(this);
         this.handleResetzero = this.handleResetzero.bind(this);
     }
@@ -12,10 +12,15 @@ class Calculatrice extends React.Component {
         this.setState(state => ({ display: state.display + value }))
     }
 
-
     handleCalculate() {
         if (this.state.display === '') {
             this.inputRef.current.focus();
+            return;
+        }
+
+        const lastChar = this.state.display.slice(-1);
+        if (['+', '-', '*', '/', '='].includes(lastChar)) {
+            this.setState({ display: 'Error' });
             return;
         }
 
@@ -27,15 +32,25 @@ class Calculatrice extends React.Component {
             this.setState({ display: 'Error' });
         }
     }
-    
+
+
     // // clear one by one
-    handleClear(){
-        this.setState((state) => ({ display:state.display.slice(0, -1)}))
+    handleClear() {
+        this.setState((state) => {
+            const newDisplay = state.display.slice(0, -1);
+            return { display: newDisplay === '' ? '0' : newDisplay };
+        });
     }
 
+
+    // // clear one by one
+    // handleClear(){
+    //     this.setState((state) => ({ display:state.display.slice(0, -1)}))
+    // }
+
     // // clear all :réinitialise l'affichage principal à "0"
-    handleResetzero(){
-        this.setState(({ display: ""}))
+    handleResetzero() {
+        this.setState(({ display: "" }))
     }
 
     render() {
