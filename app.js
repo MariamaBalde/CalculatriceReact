@@ -13,17 +13,15 @@ class Calculatrice extends React.Component {
     }
 
     handleCalculate() {
+        const invalidChars = /[^0-9+\-*/().]/;  // Expression régulière pour détecter les caractères non valides
         if (this.state.display === '') {
-            this.inputRef.current.focus();
             return;
         }
-
         const lastChar = this.state.display.slice(-1);
-        if (['+', '-', '*', '/', '='].includes(lastChar)) {
+        if (invalidChars.test(this.state.display) || ['+', '-', '*', '/', '='].includes(lastChar)) {
             this.setState({ display: 'Error' });
             return;
         }
-
         try {
             this.setState((state) => ({
                 display: eval(state.display).toString()
@@ -32,6 +30,29 @@ class Calculatrice extends React.Component {
             this.setState({ display: 'Error' });
         }
     }
+
+
+
+    // handleCalculate() {
+    //     if (this.state.display === '') {
+    //         this.inputRef.current.focus();
+    //         return;
+    //     }
+
+    //     const lastChar = this.state.display.slice(-1);
+    //     if (['+', '-', '*', '/', '='].includes(lastChar)) {
+    //         this.setState({ display: 'Error' });
+    //         return;
+    //     }
+
+    //     try {
+    //         this.setState((state) => ({
+    //             display: eval(state.display).toString()
+    //         }));
+    //     } catch (e) {
+    //         this.setState({ display: 'Error' });
+    //     }
+    // }
 
 
     // // clear one by one
